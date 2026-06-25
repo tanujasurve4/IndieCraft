@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crafts</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #c2a37d;
+      margin: 0;
+      padding: 0;
+      color: #2e1d0e;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f3e2c5;
+      padding: 15px 30px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5a3d2b;
+      font-weight: 600;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    .search-container input {
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      padding: 5px;
+      outline: none;
+    }
+
+    .search-container button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #5a3d2b;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #f3e2c5;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .product-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .product {
+      background: #f0e0d6;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      width: 45%;
+      text-align: center;
+      position: relative;
+    }
+
+    .product img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 10px;
+    }
+
+    .rating {
+      color: gold;
+      font-size: 16px;
+    }
+
+    .remove-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .remove-btn:hover {
+      background: darkred;
+    }
+    .navbar {   
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #f3e2c5;
+          padding: 15px 30px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+          font-size: 24px;
+          font-weight: bold;
+          color: #5a3d2b;
+      }
+
+      .nav-links {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin: 0;
+          padding: 0;
+      }
+
+      .nav-links li {
+          display: inline;
+      }
+
+      .nav-links a {
+          text-decoration: none;
+          color: #5a3d2b;
+          font-weight: 600;
+          transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+          color: #774936;
+      }
+
+      .search-container {
+          display: flex;
+          align-items: center;
+          background: #fff;
+          padding: 5px 10px;
+          border-radius: 10px;
+      }
+
+      .search-container input {
+          border: none;
+          background: transparent;
+          font-size: 16px;
+          padding: 5px;
+          outline: none;
+      }
+
+      .search-container button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          color: #5a3d2b;
+      }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+        IndieCrafts              
+    </div>
+    <h2 id="welcomeMessage"></h2>
+    <ul class="nav-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="explorelist.html">Shop Now</a></li>
+    </ul>
+    <div class="search-container">
+        <input type="text" placeholder="Search Handicrafts...">
+        <button>&#128269;</button>
+    </div>
+</nav>
+  <div class="container">
+    <h1>Craft Collection</h1>
+    <div class="product-row" id="craftList">
+      <!-- Static products -->
+      <div class="product">
+        <a href="craft1.html">
+          <img src="https://img.joomcdn.net/11ecad49c2518b4cd543089b8f6f0bc815905d7d_original.jpeg" alt="Handmade Wall Craft">
+        </a>
+        <h3><a href="craft1.html" style="text-decoration: none; color: #2e1d0e;">Handmade Wall Craft</a></h3>
+        <p><strong>Made By:</strong> Artisan Decor</p>
+        <p><strong>Price:</strong> ₹1,800 <del>₹2,500</del></p>
+        <div class="rating">★★★★★ 4.8/5.0</div>
+      </div>
+
+      <div class="product">
+        <a href="craft2.html">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9rMsBEs2e188_XUGhRKg9vlsFF1RgyvQqXYegeED-RuVfneD-PCPz4PmIFjEvQaW6syU&usqp=CAU" alt="Handmade Wooden Bullock Cart">
+        </a>
+        <h3><a href="craft2.html" style="text-decoration: none; color: #2e1d0e;">Handmade Wood Bullock Cart</a></h3>
+        <p><strong>Made By:</strong> Artisan Woods</p>
+        <p><strong>Price:</strong> ₹250 <del>₹300</del></p>
+        <div class="rating">★★★★★ 4.9/5.0</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let products = JSON.parse(localStorage.getItem("products")) || [];
+      let craftProducts = products.filter(p => p.category.toLowerCase().includes("craft"));
+      let craftList = document.getElementById("craftList");
+
+      craftProducts.forEach((product, i) => {
+        const fullIndex = products.findIndex(p => p.id === product.id); // safer index
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+          <a href="craft3.html?id=${product.id}" onclick="saveProduct(${fullIndex})">
+            <img src="${product.image}" alt="${product.name}">
+          </a>
+          <h3><a href="craft3.html?id=${product.id}" onclick="saveProduct(${fullIndex})" style="text-decoration: none; color: #2e1d0e;">${product.name}</a></h3>
+          <p><strong>Made By:</strong> ${product.madeBy}</p>
+          <p><strong>Price:</strong> ₹${product.price}</p>
+          <button class="remove-btn" onclick="removeProduct(${fullIndex})">Remove</button>
+        `;
+        craftList.appendChild(div);
+      });
+    });
+
+    function saveProduct(index) {
+      let products = JSON.parse(localStorage.getItem("products")) || [];
+      localStorage.setItem("selectedProduct", JSON.stringify(products[index]));
+    }
+
+    function removeProduct(index) {
+      let products = JSON.parse(localStorage.getItem("products")) || [];
+      products.splice(index, 1);
+      localStorage.setItem("products", JSON.stringify(products));
+      location.reload();
+    }
+  </script>
+</body>
+</html>

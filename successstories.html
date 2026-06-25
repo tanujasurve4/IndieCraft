@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Success Stories & Reviews</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #c8a57c;
+    }
+
+    header {
+      background-color: #f5e1c1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 18px;
+      margin: 0;
+      color: #3b2a1a;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #3b2a1a;
+      font-weight: 600;
+      margin: 0 10px;
+      font-size: 14px;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 10px;
+      padding: 4px 8px;
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      font-size: 12px;
+      padding: 4px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 20px auto;
+      gap: 20px;
+    }
+
+    .content {
+      flex: 3;
+      background-color: #f5e1c1;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .form-section {
+      flex: 1;
+      background-color: #f5e1c1;
+      padding: 25px 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      color: #3b2a1a;
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    h2#stories-title {
+      font-size: 30px;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      height: auto;
+    }
+
+    .slide, .review-slide {
+      display: none;
+      align-items: center;
+      gap: 15px;
+      background-color: #f2ded1;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .slide.active, .review-slide.active {
+      display: flex;
+    }
+
+    .slide img {
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .slide-content h3, .review-slide h4 {
+      margin: 0;
+      color: #3b2a1a;
+      font-size: 16px;
+    }
+
+    .slide-content p, .review-slide p {
+      margin: 5px 0 0;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .arrows {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .arrow-btn {
+      font-size: 20px;
+      background-color: #5c3b23;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .arrow-btn:hover {
+      background-color: #402918;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #b9946d;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    .form-section button {
+      background-color: #5c3b23;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-section button:hover {
+      background-color: #402918;
+    }
+
+    .delete-btn {
+      margin-top: 5px;
+      color: #a94442;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      text-decoration: underline;
+    }
+
+    .stars {
+      color: #f5b301;
+      font-size: 16px;
+    }
+
+    .star-rating {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .star-rating i {
+      font-style: normal;
+      font-size: 20px;
+      color: #ccc;
+      transition: color 0.2s;
+    }
+
+    .star-rating i.selected,
+    .star-rating i.hovered {
+      color: #f5b301;
+    }
+    .navbar {   
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #f3e2c5;
+          padding: 15px 30px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+          font-size: 24px;
+          font-weight: bold;
+          color: #5a3d2b;
+      }
+
+      .nav-links {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin: 0;
+          padding: 0;
+      }
+
+      .nav-links li {
+          display: inline;
+      }
+
+      .nav-links a {
+          text-decoration: none;
+          color: #5a3d2b;
+          font-weight: 600;
+          transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+          color: #774936;
+      }
+
+      .search-container {
+          display: flex;
+          align-items: center;
+          background: #fff;
+          padding: 5px 10px;
+          border-radius: 10px;
+      }
+
+      .search-container input {
+          border: none;
+          background: transparent;
+          font-size: 16px;
+          padding: 5px;
+          outline: none;
+      }
+
+      .search-container button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          color: #5a3d2b;
+      }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+        IndieCrafts              
+    </div>
+    <h2 id="welcomeMessage"></h2>
+    <ul class="nav-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="explorelist.html">Shop Now</a></li>
+    </ul>
+    <div class="search-container">
+        <input type="text" placeholder="Search Handicrafts...">
+        <button>&#128269;</button>
+    </div>
+</nav>
+<div class="container">
+  <div class="content">
+    <h2 id="stories-title">Success Stories</h2>
+    <div class="carousel" id="success-carousel">
+      <div class="slide active">
+        <img src="https://media.istockphoto.com/id/1349340136/photo/portrait-of-a-happy-senior-woman.jpg?s=612x612&w=0&k=20&c=TlS1DcZPcrkl_tszG8qJLivpualsXqyDCu7Ha5iKZrA=" alt="Aarti Sharma">
+        <div class="slide-content">
+          <h3>Aarti Sharma - Reviving Handloom</h3>
+          <p>Arti Sharma from Varanasi revived her family’s traditional handloom weaving by launching a small online store. With growing support and visibility, she now employs 15 local weavers and exports her sarees to international markets.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://t4.ftcdn.net/jpg/05/57/69/27/360_F_557692714_mWe42f6lqGZI36sIWOp2h3D7GQh7TA1X.jpg" alt="Meena Patel">
+        <div class="slide-content">
+          <h3>Meena Patel - Clay Wonders</h3>
+          <p>Meena Patel turned her childhood passion for clay modeling into 'Clay Wonders,' a homegrown brand of eco-friendly decor. Her handcrafted pieces gained popularity through social media, allowing her to train rural women and expand her business across India.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="https://img.freepik.com/premium-photo/portrait-man-standing-against-sky_1048944-11657832.jpg?semt=ais_hybrid&w=740" alt="Ramesh Verma">
+        <div class="slide-content">
+          <h3>Ramesh Verma - Carving Success</h3>
+          <p>Ramesh Verma, a traditional woodcarver from Saharanpur, once struggled to find buyers and barely made ends meet. Now his art found recognition nationwide—he now runs a successful business and trains aspiring artisans across India.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 30px;">What Our Customers Say</h2>
+    <div class="carousel" id="review-carousel">
+      <div class="review-slide active">
+        <div>
+          <h4>Neha Singh</h4>
+          <p class="stars">★★★★★</p>
+          <p>"Beautifully handmade and delivered on time. Highly recommend IndieCrafts!"</p>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div>
+          <h4>Ajay Mishra</h4>
+          <p class="stars">★★★★☆</p>
+          <p>"The quality of the products is amazing. Loved the support for local artisans."</p>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div>
+          <h4>Sneha Patel</h4>
+          <p class="stars">★★★★★</p>
+          <p>"Every purchase feels personal and authentic. Will definitely shop again!"</p>
+        </div>
+      </div>
+    </div>
+    <div class="arrows">
+      <button class="arrow-btn" onclick="changeSlide(-1, 'review-slide')">←</button>
+      <button class="arrow-btn" onclick="changeSlide(1, 'review-slide')">→</button>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2>Post a Review</h2>
+    <input type="text" id="reviewName" placeholder="Your name">
+    <textarea id="reviewText" placeholder="Share your experience..."></textarea>
+    <label>Your Rating:</label>
+    <div class="star-rating" id="starInput">
+      <i data-value="1">★</i>
+      <i data-value="2">★</i>
+      <i data-value="3">★</i>
+      <i data-value="4">★</i>
+      <i data-value="5">★</i>
+    </div>
+    <button onclick="addReview()">Add Review</button>
+  </div>
+</div>
+
+<script>
+  function changeSlide(direction, className) {
+    const slides = document.querySelectorAll('.' + className);
+    let currentIndex = [...slides].findIndex(slide => slide.classList.contains('active'));
+    if (currentIndex !== -1) slides[currentIndex].classList.remove('active');
+    let nextIndex = (currentIndex + direction + slides.length) % slides.length;
+    slides[nextIndex].classList.add('active');
+  }
+
+  let selectedStars = 5;
+
+  const stars = document.querySelectorAll('#starInput i');
+  stars.forEach(star => {
+    star.addEventListener('mouseover', () => {
+      const val = +star.dataset.value;
+      stars.forEach(s => s.classList.toggle('hovered', +s.dataset.value <= val));
+    });
+    star.addEventListener('mouseout', () => {
+      stars.forEach(s => s.classList.remove('hovered'));
+    });
+    star.addEventListener('click', () => {
+      selectedStars = +star.dataset.value;
+      stars.forEach(s => s.classList.toggle('selected', +s.dataset.value <= selectedStars));
+    });
+  });
+
+  function addReview() {
+    const name = document.getElementById('reviewName').value.trim();
+    const text = document.getElementById('reviewText').value.trim();
+    if (!name || !text) return alert("Please fill in all fields.");
+
+    const container = document.getElementById('review-carousel');
+
+    const div = document.createElement('div');
+    div.className = "review-slide";
+    div.innerHTML = `
+      <div>
+        <h4>${name}</h4>
+        <p class="stars">${'★'.repeat(selectedStars)}${'☆'.repeat(5 - selectedStars)}</p>
+        <p>"${text}"</p>
+        <button class="delete-btn" onclick="deleteReview(this)">Remove</button>
+      </div>
+    `;
+
+    container.appendChild(div);
+    document.getElementById('reviewName').value = '';
+    document.getElementById('reviewText').value = '';
+    stars.forEach(s => s.classList.remove('selected'));
+    selectedStars = 5;
+  }
+
+  function deleteReview(btn) {
+    const card = btn.closest('.review-slide');
+    const wasActive = card.classList.contains('active');
+    card.remove();
+
+    const all = document.querySelectorAll('.review-slide');
+    if (wasActive && all.length) all[0].classList.add('active');
+  }
+
+  setInterval(() => changeSlide(1, 'slide'), 5000);
+</script>
+
+</body>
+</html>

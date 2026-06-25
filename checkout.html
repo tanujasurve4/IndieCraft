@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+        .navbar {   
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #f3e2c5;
+          padding: 15px 30px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+          font-size: 24px;
+          font-weight: bold;
+          color: #5a3d2b;
+      }
+
+      .nav-links {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin: 0;
+          padding: 0;
+      }
+
+      .nav-links li {
+          display: inline;
+      }
+
+      .nav-links a {
+          text-decoration: none;
+          color: #5a3d2b;
+          font-weight: 600;
+          transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+          color: #774936;
+      }
+
+      .search-container {
+          display: flex;
+          align-items: center;
+          background: #fff;
+          padding: 5px 10px;
+          border-radius: 10px;
+      }
+
+      .search-container input {
+          border: none;
+          background: transparent;
+          font-size: 16px;
+          padding: 5px;
+          outline: none;
+      }
+
+      .search-container button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          color: #5a3d2b;
+      }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #c2a37d; color: #2e1d0e; margin: 0; padding: 0; }
+        .checkout-container { max-width: 600px; margin: 40px auto; background: #f3e2c5; padding: 20px; border-radius: 10px; box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); text-align: center; }
+        .button { background: #774936; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-top: 20px; }
+        .button:hover { background: #5a3d2b; }
+        input, select { width: 90%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #774936; }
+        #paypal-button-container { margin-top: 20px; display: none; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            IndieCrafts              
+        </div>
+        <h2 id="welcomeMessage"></h2>
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="explorelist.html">Shop Now</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" placeholder="Search Handicrafts...">
+            <button>&#128269;</button>
+        </div>
+    </nav>
+    <div class="checkout-container">
+        <h2>Checkout</h2>
+        <p>Total Amount: ₹<span id="checkout-total">0</span></p>
+        
+        <h3>Billing Details</h3>
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="address" placeholder="Shipping Address" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        
+        <select id="payment-method" onchange="handlePaymentSelection()">
+            <option value="">Select Payment Method</option>
+            <option value="cod">Cash on Delivery</option>
+            <option value="googlepay">Google Pay</option>
+            <option value="phonepe">PhonePe</option>
+            <option value="paytm">Paytm</option>
+            <option value="paypal">PayPal</option>
+        </select>
+        
+        <button class="button" onclick="placeOrder()">PLACE ORDER</button>
+        <div id="paypal-button-container"></div>
+    </div>
+
+    <script>
+        let totalAmountINR = Number(localStorage.getItem("totalPrice")) || 0;
+        let totalAmountUSD = (totalAmountINR / 85).toFixed(2);
+        document.getElementById("checkout-total").innerText = totalAmountINR;
+
+        function placeOrder() {
+            let name = document.getElementById("name").value;
+            let address = document.getElementById("address").value;
+            let phone = document.getElementById("phone").value;
+            let paymentMethod = document.getElementById("payment-method").value;
+
+            if (!name || !address || !phone || !paymentMethod) {
+                alert("Please fill in all the details.");
+                return;
+            }
+
+            if (totalAmountINR <= 0) {
+                alert("Invalid order amount.");
+                return;
+            }
+
+            if (paymentMethod === "cod") {
+                alert("Order placed successfully! Thank you for shopping.");
+                localStorage.removeItem("cart");
+                localStorage.removeItem("totalPrice");
+            } else {
+                redirectToPayment(paymentMethod);
+            }
+        }
+
+        function redirectToPayment(paymentMethod) {
+            let upiID = "8975051135@ybl";
+            let amount = totalAmountINR;
+            let encodedName = encodeURIComponent("Snehal"); 
+
+            let paymentLinks = {
+                "googlepay": `upi://pay?pa=${upiID}&pn=${encodedName}&am=${amount}&cu=INR`,
+                "phonepe": `upi://pay?pa=${upiID}&pn=${encodedName}&am=${amount}&cu=INR`,
+                "paytm": `upi://pay?pa=${upiID}&pn=${encodedName}&am=${amount}&cu=INR`
+            };
+
+            if (paymentMethod === "paypal") {
+                document.getElementById("paypal-button-container").style.display = "block";
+                loadPayPalButton();
+            } else if (paymentLinks[paymentMethod]) {
+                alert("Redirecting to payment...");
+                window.location.href = paymentLinks[paymentMethod];  // Redirects to UPI app
+            } else {
+                alert("Invalid payment method selected.");
+            }
+        }
+
+        function handlePaymentSelection() {
+            let paymentMethod = document.getElementById("payment-method").value;
+            if (paymentMethod === "paypal") {
+                document.getElementById("paypal-button-container").style.display = "block";
+                loadPayPalButton();
+            } else {
+                document.getElementById("paypal-button-container").style.display = "none";
+            }
+        }
+
+        function loadPayPalButton() {
+            document.getElementById("paypal-button-container").innerHTML = "";
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: { value: totalAmountUSD }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Transaction completed by ' + details.payer.name.given_name);
+                        localStorage.removeItem("cart");
+                        localStorage.removeItem("totalPrice");
+                    });
+                }
+            }).render('#paypal-button-container');
+        }
+    </script>
+</body>
+</html>

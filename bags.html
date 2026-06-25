@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bags</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #c2a37d;
+            margin: 0;
+            padding: 0;
+            color: #2e1d0e;
+        }
+    
+        .search-container button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #5a3d2b;
+        }
+    
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f3e2c5;
+            padding: 15px 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+    
+        .nav-links li {
+            display: inline;
+        }
+    
+        .nav-links a {
+            text-decoration: none;
+            color: #5a3d2b;
+            font-weight: 600;
+        }
+    
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #f3e2c5;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+    
+        .product-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+    
+        .product {
+            background: #f0e0d6;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+    
+        .product h3,
+        .product p,
+        .product .rating {
+            margin: 6px 0;
+            line-height: 1.2;
+        }
+    
+        .product h3 a {
+            color: #2e1d0e;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    
+        .rating {
+            color: gold;
+            font-size: 16px;
+        }
+    
+        .remove-btn {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: auto;
+            margin-top: 12px;
+        }
+    
+        .remove-btn:hover {
+            background: #a83226;
+        }
+        .navbar {   
+        display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f3e2c5;
+            padding: 15px 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5a3d2b;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5a3d2b;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #774936;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+
+        .search-container input {
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            padding: 5px;
+            outline: none;
+        }
+
+        .search-container button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #5a3d2b;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            IndieCrafts              
+        </div>
+        <h2 id="welcomeMessage"></h2>
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="explorelist.html">Shop Now</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" placeholder="Search Handicrafts...">
+            <button>&#128269;</button>
+        </div>
+    </nav>
+    <div class="container">
+    <h1>Bags Collection</h1>
+    
+    <div class="product-row" id="bagListStatic">
+        <div class="product">
+            <a href="bag3.html?id=bag1">
+                <img src="https://i.etsystatic.com/35233010/r/il/5ec6a8/5878211102/il_fullxfull.5878211102_soyw.jpg" alt="Handmade Tote Bag">
+            </a>
+            <h3><a href="bag3.html?id=bag1">Handmade Tote Bag</a></h3>
+            <p><strong>Made By:</strong> Artisan Creations</p>
+            <p><strong>Price:</strong> ₹1,200</p>
+            <div class="rating">★★★★★ 4.8/5.0</div>
+        </div>
+
+        <div class="product">
+            <a href="bag3.html?id=bag2">
+                <img src="https://i.etsystatic.com/21162700/r/il/c77de8/3574632888/il_570xN.3574632888_mlod.jpg" alt="Eco-Friendly Jute Bag">
+            </a>
+            <h3><a href="bag3.html?id=bag2">Eco-Friendly Jute Bag</a></h3>
+            <p><strong>Made By:</strong> Green Hands</p>
+            <p><strong>Price:</strong> ₹800</p>
+            <div class="rating">★★★★★ 4.9/5.0</div>
+        </div>
+    </div>
+    <div class="product-row" id="bagList"></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (!localStorage.getItem("defaultBagsSet")) {
+            let defaultBags = [
+                {
+                    id: "bag1",
+                    name: "Handmade Tote Bag",
+                    image: "https://i.etsystatic.com/35233010/r/il/5ec6a8/5878211102/il_fullxfull.5878211102_soyw.jpg",
+                    price: "1,200",
+                    madeBy: "Artisan Creations",
+                    description: "Beautiful handcrafted tote bag made with sustainable materials.",
+                    category: "bags"
+                },
+                {
+                    id: "bag2",
+                    name: "Eco-Friendly Jute Bag",
+                    image: "https://i.etsystatic.com/21162700/r/il/c77de8/3574632888/il_570xN.3574632888_mlod.jpg",
+                    price: "800",
+                    madeBy: "Green Hands",
+                    description: "Eco-friendly jute bag, perfect for shopping and daily use.",
+                    category: "bags"
+                }
+            ];
+            
+            localStorage.setItem("defaultBags", JSON.stringify(defaultBags));
+            localStorage.setItem("defaultBagsSet", "true");
+        }
+        
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        let bagList = document.getElementById("bagList");
+
+        products.forEach((product, index) => {
+            if (product.category && product.category.toLowerCase().includes("bags")) {
+                const productId = `custom_bag_${index}`;
+                
+                let productDiv = document.createElement("div");
+                productDiv.className = "product";
+                productDiv.innerHTML = `
+                    <a href="bag3.html?id=${productId}">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='placeholder.jpg';">
+                    </a>
+                    <h3><a href="bag3.html?id=${productId}">${product.name}</a></h3>
+                    <p><strong>Made By:</strong> ${product.madeBy}</p>
+                    <p><strong>Price:</strong> ₹${product.price}</p>
+                    <button class="remove-btn" onclick="removeProduct(${index})">Remove</button>
+                `;
+                bagList.appendChild(productDiv);
+            }
+        });
+    });
+
+    function removeProduct(index) {
+        let products = JSON.parse(localStorage.getItem("products")) || [];
+        products.splice(index, 1);
+        localStorage.setItem("products", JSON.stringify(products));
+        location.reload();
+    }
+</script>
+
+</body>
+</html>

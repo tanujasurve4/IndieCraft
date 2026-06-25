@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothes</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #c2a37d;
+            margin: 0;
+            padding: 0;
+            color: #2e1d0e;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        .search-container input {
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            padding: 5px;
+            outline: none;
+        }
+        .search-container button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #5a3d2b;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f3e2c5;
+            padding: 15px 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links li {
+            display: inline;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #5a3d2b;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #f3e2c5;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .product-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product {
+            background: #f0e0d6;
+            padding: 15px;
+            border-radius: 10px;
+            width: 45%;
+            text-align: center;
+            position: relative;
+        }
+        .product img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 10px;
+        }
+        .remove-btn {
+            background: red;
+            color: white;
+            padding: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .product h3 a {
+            color: #2e1d0e;
+            text-decoration: none;
+        }
+        .rating {
+            color: gold;
+            font-size: 16px;
+        }
+        .navbar {   
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #f3e2c5;
+          padding: 15px 30px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+          font-size: 24px;
+          font-weight: bold;
+          color: #5a3d2b;
+      }
+
+      .nav-links {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin: 0;
+          padding: 0;
+      }
+
+      .nav-links li {
+          display: inline;
+      }
+
+      .nav-links a {
+          text-decoration: none;
+          color: #5a3d2b;
+          font-weight: 600;
+          transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+          color: #774936;
+      }
+
+      .search-container {
+          display: flex;
+          align-items: center;
+          background: #fff;
+          padding: 5px 10px;
+          border-radius: 10px;
+      }
+
+      .search-container input {
+          border: none;
+          background: transparent;
+          font-size: 16px;
+          padding: 5px;
+          outline: none;
+      }
+
+      .search-container button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          color: #5a3d2b;
+      }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            IndieCrafts              
+        </div>
+        <h2 id="welcomeMessage"></h2>
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="explorelist.html">Shop Now</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" placeholder="Search Handicrafts...">
+            <button>&#128269;</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Clothes Collection</h1>
+        <div class="product-row" id="clothesList">
+            <div class="product">
+                <a href="clothes3.html?id=1">
+                    <img src="https://pmssarees.com/cdn/shop/files/WhatsAppImage2025-01-11at4.42.04PM_1.jpg?v=1736596834" alt="Handicraft Silk Saree">
+                </a>
+                <h3><a href="clothes3.html?id=1">Handicraft Silk Saree</a></h3>
+                <p><strong>Made By:</strong> Ethnic Weaves</p>
+                <p><strong>Price:</strong> ₹1,500</p>
+                <div class="rating">★★★★★ 4.8/5.0</div>
+            </div>
+
+            <div class="product">
+                <a href="clothes3.html?id=2">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL6yeFu9y1Vq9QjekjkJn04D0f153jNl5o0w&s" alt="Handmade Wool Sweater">
+                </a>
+                <h3><a href="clothes3.html?id=2">Handmade Wool Sweater</a></h3>
+                <p><strong>Made By:</strong> Cozy Creations</p>
+                <p><strong>Price:</strong> ₹1,000</p>
+                <div class="rating">★★★★★ 4.9/5.0</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!localStorage.getItem("defaultProductsSet")) {
+                let defaultProducts = [
+                    {
+                        id: 1,
+                        name: "Handicraft Silk Saree",
+                        image: "https://pmssarees.com/cdn/shop/files/WhatsAppImage2025-01-11at4.42.04PM_1.jpg?v=1736596834",
+                        price: "1,500",
+                        madeBy: "Ethnic Weaves",
+                        description: "Beautifully handcrafted silk saree with traditional designs.",
+                        category: "clothes"
+                    },
+                    {
+                        id: 2,
+                        name: "Handmade Wool Sweater",
+                        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL6yeFu9y1Vq9QjekjkJn04D0f153jNl5o0w&s",
+                        price: "1,000",
+                        madeBy: "Cozy Creations",
+                        description: "Warm and comfortable handmade wool sweater, perfect for winter.",
+                        category: "clothes"
+                    }
+                ];
+                
+                localStorage.setItem("defaultProducts", JSON.stringify(defaultProducts));
+                localStorage.setItem("defaultProductsSet", "true");
+            }
+            
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+            let clothesList = document.getElementById("clothesList");
+    
+            products.forEach((product, index) => {
+                if (
+                    product.category &&
+                    product.category.toLowerCase().includes("clothes") &&
+                    product.name &&
+                    product.image &&
+                    product.madeBy &&
+                    product.price
+                ) {
+                    let productDiv = document.createElement("div");
+                    productDiv.className = "product";
+    
+                    const productId = `custom_${index}`;
+                    
+                    productDiv.innerHTML = `
+                        <a href="clothes3.html?id=${productId}">
+                            <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='placeholder.jpg';">
+                        </a>
+                        <h3><a href="clothes3.html?id=${productId}">${product.name}</a></h3>
+                        <p><strong>Made By:</strong> ${product.madeBy}</p>
+                        <p><strong>Price:</strong> ₹${product.price}</p>
+                        <button class="remove-btn" onclick="removeProduct(${index})">Remove</button>
+                    `;
+                    clothesList.appendChild(productDiv);
+                }
+            });
+        });
+    
+        function removeProduct(index) {
+            let products = JSON.parse(localStorage.getItem("products")) || [];
+            products.splice(index, 1);
+            localStorage.setItem("products", JSON.stringify(products));
+            location.reload();
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndieCraft | Homepage</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #c2a37d;
+            color: #2e1d0e;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f3e2c5;
+            padding: 15px 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5a3d2b;
+            font-weight: 600;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+
+        .search-container input {
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            padding: 5px;
+            outline: none;
+        }
+
+        .search-container button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #5a3d2b;
+        }
+
+        .homepage-content {
+            text-align: center;
+            margin: 30px;
+        }
+
+        .homepage-content h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #774936;
+        }
+
+        .grid-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            width: 300px;
+            height: 350px;
+            background-color: #f3e2c5;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 85%;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .button {
+            background: #774936;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .button:hover {
+            background: #5a3d2b;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logout-btn {
+            background: #774936;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background: #5a3d2b;
+        }
+
+        .user-welcome {
+            color: #5a3d2b;
+            font-weight: 600;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .login-btn, .signup-btn {
+            background: #774936;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .login-btn:hover, .signup-btn:hover {
+            background: #5a3d2b;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            IndieCrafts              
+        </div>
+        <ul class="nav-links">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="explorelist.html">Shop Now</a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" placeholder="Search Handicrafts...">
+            <button>&#128269;</button>
+        </div>
+        <div id="auth-section">
+            <!-- This section will be populated by JavaScript -->
+        </div>
+    </nav>
+ 
+    <section class="homepage-content">
+        <h2>TRENDY. TRADITIONAL. HANDCRAFTED.</h2>
+        <p>"Blending tradition with modern trends through exquisite handcrafted designs."</p>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img src="https://www.shutterstock.com/shutterstock/videos/3712832069/thumb/1.jpg?ip=x480" alt="Learn Arts">
+                <button class="button" onclick="window.location.href='learn.html'">Learn Arts</button>
+            </div>
+            <div class="grid-item">
+                <img src="https://media.istockphoto.com/id/1181914403/photo/mother-and-kids-shopping-online-on-christmas.jpg?s=612x612&w=0&k=20&c=MgLIyF7YhFjVHdoGh32_OEGL7_SzyvEg1R4wXVtylQk=" alt="Explore Latest Crafts">
+                <button class="button" onclick="window.location.href='explorelist.html'">Explore Latest Crafts</button>
+            </div>
+            <div class="grid-item">
+                <img src="https://cdn-blog.superprof.com/blog_in/wp-content/uploads/2023/01/women-empowerment-through-activities-manav-ekta-mission.jpg" alt="Business Community">
+                <button class="button" onclick="window.location.href='bussinesscommunity.html'">Business Community</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Firebase configuration - make sure this matches with your login and signup pages
+        const firebaseConfig = {
+            apiKey: "AIzaSyA6kw7myRgebBFJY01ccjlYC7IVfesUzm0",
+            authDomain: "techproject-f749d.firebaseapp.com",
+            projectId: "techproject-f749d",
+            storageBucket: "techproject-f749d.appspot.com",
+            messagingSenderId: "318910876949",
+            appId: "1:123456789:web:a1b2c3d4e5f6"
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Check if user is logged in when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up authentication state observer
+            auth.onAuthStateChanged(user => {
+                updateAuthSection(user);
+                
+                if (user) {
+                    console.log("User is signed in:", user.email);
+                    // You can load additional user data from Firestore here if needed
+                    loadUserData(user.uid);
+                } else {
+                    console.log("No user is signed in");
+                }
+            });
+        });
+
+        // Load user data from Firestore if needed
+        function loadUserData(userId) {
+            db.collection("userProfiles").doc(userId).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        const userData = doc.data();
+                        // You can store this data in localStorage if needed
+                        localStorage.setItem('currentUser', JSON.stringify({
+                            uid: userId,
+                            email: userData.email,
+                            name: userData.name || userData.email.split('@')[0],
+                            // Add other fields as needed
+                        }));
+                        
+                        // Update UI with the user's name
+                        updateAuthSection(auth.currentUser, userData.name);
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error loading user data:", error);
+                });
+        }
+
+        // Function to update the auth section based on login status
+        function updateAuthSection(user, userName = null) {
+            const authSection = document.getElementById('auth-section');
+            
+            if (user) {
+                // User is logged in - show welcome message and logout button
+                // Try to get name from Firestore data, then from localStorage, or use email as fallback
+                let displayName = userName;
+                
+                if (!displayName) {
+                    try {
+                        const localUserData = JSON.parse(localStorage.getItem('currentUser'));
+                        if (localUserData && localUserData.name) {
+                            displayName = localUserData.name;
+                        }
+                    } catch (e) {
+                        console.error("Error parsing local user data:", e);
+                    }
+                }
+                
+                if (!displayName) {
+                    displayName = user.displayName || user.email.split('@')[0];
+                }
+                
+                authSection.innerHTML = `
+                    <div class="user-section">
+                        <span class="user-welcome">Welcome, ${displayName}!</span>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+                `;
+            } else {
+                // User is not logged in - show login and signup buttons
+                authSection.innerHTML = `
+                    <div class="auth-buttons">
+                        <a href="login.html" class="login-btn">Login</a>
+                        <a href="signup.html" class="signup-btn">Sign Up</a>
+                    </div>
+                `;
+            }
+        }
+
+        // Logout function using Firebase
+        function logout() {
+            auth.signOut()
+                .then(() => {
+                    // Sign-out successful
+                    console.log("User signed out successfully");
+                    localStorage.removeItem('currentUser'); // Clear any local storage
+                    alert('You have been logged out successfully!');
+                    // No need to redirect - auth state observer will update the UI
+                })
+                .catch((error) => {
+                    // An error happened
+                    console.error("Logout error:", error);
+                    alert('Error logging out: ' + error.message);
+                });
+        }
+
+        // Tawk.to live chat integration
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/6803a3c2f1ef2f1911a0d85d/1ip73fd0e';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</body>
+</html>

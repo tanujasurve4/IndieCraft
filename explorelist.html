@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Categories</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #c2a37d;
+      margin: 0;
+      padding: 0;
+      color: #2e1d0e;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f3e2c5;
+      padding: 15px 30px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #5a3d2b;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #f3e2c5;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    .category-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #774936;
+      color: white;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 600px;
+      margin: 10px auto;
+      text-align: left;
+      transition: background 0.3s;
+    }
+    .category-btn:hover {
+      background: #5a3d2b;
+    }
+    .category-btn span {
+      font-weight: bold;
+    }
+    .arrow {
+      font-size: 20px;
+    }
+    .navbar {   
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #f3e2c5;
+          padding: 15px 30px;
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+          font-size: 24px;
+          font-weight: bold;
+          color: #5a3d2b;
+      }
+
+      .nav-links {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin: 0;
+          padding: 0;
+      }
+
+      .nav-links li {
+          display: inline;
+      }
+
+      .nav-links a {
+          text-decoration: none;
+          color: #5a3d2b;
+          font-weight: 600;
+          transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+          color: #774936;
+      }
+
+      .search-container {
+          display: flex;
+          align-items: center;
+          background: #fff;
+          padding: 5px 10px;
+          border-radius: 10px;
+      }
+
+      .search-container input {
+          border: none;
+          background: transparent;
+          font-size: 16px;
+          padding: 5px;
+          outline: none;
+      }
+
+      .search-container button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+          color: #5a3d2b;
+      }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+        IndieCrafts              
+    </div>
+    <h2 id="welcomeMessage"></h2>
+    <ul class="nav-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="explorelist.html">Shop Now</a></li>
+    </ul>
+    <div class="search-container">
+        <input type="text" placeholder="Search Handicrafts...">
+        <button>&#128269;</button>
+    </div>
+</nav>
+  <div class="container">
+    <h1>Choose Product Category</h1>
+
+    <button class="category-btn" onclick="window.location.href='bags.html'">
+      <span>Bags</span><span class="arrow">→</span>
+    </button>
+    <button class="category-btn" onclick="window.location.href='clothes.html'">
+      <span>Clothes</span><span class="arrow">→</span>
+    </button>
+    <button class="category-btn" onclick="window.location.href='craft.html'">
+      <span>Crafts</span><span class="arrow">→</span>
+    </button>
+
+    <div id="dynamic-categories"></div>
+  </div>
+
+  <script>
+    const shownCategories = ['bags', 'clothes', 'craft'];
+    const container = document.getElementById("dynamic-categories");
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+
+    console.log(products);
+
+    const uniqueCategories = [...new Set(products.map(p => p.category.toLowerCase()))];
+
+    uniqueCategories.forEach(cat => {
+        if (!shownCategories.includes(cat)) {
+            const displayName = cat.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            const btn = document.createElement("button");
+            btn.classList.add("category-btn");
+
+            btn.onclick = (e) => {
+                if (e.target.classList.contains("remove-cross")) return;
+                const categoryParam = encodeURIComponent(cat);
+                window.location.href = `newcategory.html?category=${categoryParam}`;
+            };
+
+            btn.innerHTML = `
+                <span style="flex: 1; display: flex; justify-content: space-between; align-items: center;">
+                    <span>${displayName}</span>
+                    <span class="remove-cross" style="margin-left: 15px; color: #fff; background: #a33; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer;">×</span>
+                </span>
+            `;
+
+            btn.querySelector(".remove-cross").onclick = (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                const updated = products.filter(p => p.category.toLowerCase() !== cat);
+                localStorage.setItem("products", JSON.stringify(updated));
+                container.removeChild(btn);
+            };
+
+            container.appendChild(btn);
+        }
+    });
+</script>  
+</body>
+</html>

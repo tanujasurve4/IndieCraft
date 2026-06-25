@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resources</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #c2a37d;
+      margin: 0;
+      padding: 0;
+      color: #2e1d0e;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background: #f3e2c5;
+      padding: 15px 30px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5a3d2b;
+    }
+
+    #welcomeMessage {
+      flex: 1;
+      text-align: center;
+      font-size: 18px;
+      color: #774936;
+      margin: 0;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5a3d2b;
+      font-weight: 600;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 5px 10px;
+      border-radius: 10px;
+      margin-left: 20px;
+    }
+
+    .search-container input {
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      padding: 5px;
+      outline: none;
+    }
+
+    .search-container button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #5a3d2b;
+    }
+
+    .section {
+      margin: 40px;
+    }
+
+    h1 {
+      color: #774936;
+      margin-bottom: 10px;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+      overflow: visible;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      min-width: 220px;
+      max-width: 220px;
+      background: #f0e0d6;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      max-height: 200px;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+      color: #774936;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup {
+      background: #fff5eb;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 90%;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.3s ease-in-out;
+      text-align: center;
+    }
+
+    .popup h3 {
+      color: #5a3d2b;
+    }
+
+    .popup p {
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .popup a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #774936;
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .popup-close {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .popup-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .popup-img {
+      max-width: 300px;
+      max-height: 250px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 10px;
+      flex-shrink: 0;
+      background-color: #f3f3f3;
+    }
+
+    .popup-text {
+      flex: 1;
+      text-align: left;
+      line-height: 1.6;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .popup-text h3 {
+      margin-top: 0;
+    }
+
+    .popup-text ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">IndieCrafts</div>
+    <h2 id="welcomeMessage">Welcome to Craftizen</h2>
+    <ul class="nav-links">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="explorelist.html">Shop Now</a></li>
+    </ul>
+    <div class="search-container">
+      <input type="text" placeholder="Search Handicrafts...">
+      <button>&#128269;</button>
+    </div>
+  </nav>
+
+  <div class="section">
+    <h1>Government Schemes</h1>
+    <div class="carousel">
+      <div class="card" onclick="showPopup('PMEGP', ['Financial help for micro-enterprises (PMEGP)', 'Subsidies for rural artisans', 'Skill development and training programs', 'Access to low-interest business loans'], 'https://msme.gov.in/1-prime-ministers-employment-generation-programme-pmegp','https://www.shutterstock.com/shutterstock/videos/1098880025/thumb/1.jpg?ip=x480')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaktgh0M77w8H-I-Mnrc5csR6lRdRT0nkRBQ&s" alt="PMEGP">
+        <h3>PMEGP</h3>
+      </div>
+      <div class="card" onclick="showPopup('Stand-Up India', ['Provides loans between ₹10 lakh and ₹1 crore', 'Targets women and SC/ST entrepreneurs', 'Aims to promote entrepreneurship and job creation', 'Includes support for setting up greenfield enterprises'], 'https://www.myscheme.gov.in/schemes/sui','https://www.shutterstock.com/shutterstock/videos/1110615739/thumb/1.jpg?ip=x480')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSstF505Vn6P5ZVgG1-0IB1PiZFctJ4UjZvJg&s" alt="Stand-Up India">
+        <h3>Stand-Up India</h3>
+      </div>
+      <div class="card" onclick="showPopup('Mudra Yojana', ['Offers loans up to ₹10 lakh for small businesses', 'Categorized into Shishu, Kishor, and Tarun stages', 'No collateral required for loans', 'Supports non-corporate, non-farm small/micro enterprises'], 'https://www.mudra.org.in/','https://media.istockphoto.com/id/1316735334/photo/young-indian-farmer-with-agronomist-at-banana-field.jpg?s=612x612&w=0&k=20&c=SjD-Bi-oO9LsYUSB69Jphal7nB-DySGiwLb8aDnw8UI=')">
+        <img src="https://cdn.zeebiz.com/hindi/sites/default/files/2024/04/09/174847-pm-mudra-yojana.jpg?im=FitAndFill=(1200,900)" alt="Mudra Yojana">
+        <h3>Mudra Yojana</h3>
+      </div>
+      <div class="card" onclick="showPopup('NSIC – National Small Industries Corporation Scheme', ['Provides raw material assistance and marketing support', 'Offers credit support through tie-ups with banks', 'Helps in technology upgradation and skill development', 'Supports participation in exhibitions and trade fairs'], 'https://www.nsic.co.in/','https://www.shutterstock.com/shutterstock/videos/1110615263/thumb/1.jpg?ip=x480')">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2022/11/GL/ZM/SD/180195332/nsic-registration-services.jpeg" alt="Mudra Yojana">
+        <h3>NSIC – National Small Industries Corporation Scheme</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h1>Marketplace Tips</h1>
+    <div class="carousel">
+      <div class="card" onclick="showPopup('Great Photos', ['Use natural light to enhance product clarity and warmth','Choose clean backgrounds to avoid distractions and highlight your item','Keep your focus sharp to capture every fine detail clearly','Apply the rule of thirds to create visually balanced and appealing shots'], 'https://www.bobbooks.co.uk/blog/20-essential-photography-tips-for-beginners-1','https://images.pexels.com/photos/1367202/pexels-photo-1367202.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+        <img src="data:image/jpeg;base64,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" alt="Great Photos">
+        <h3>Great Photos</h3>
+      </div>
+      <div class="card" onclick="showPopup('Clear Descriptions', ['Use clear, simple language to describe the product', 'Mention the materials used and their quality', 'Explain how the product is made (handmade, technique, etc.)', 'Highlight the unique value or cultural story behind it'], 'https://thegood.com/insights/product-descriptions/','https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/VH-Spjq/videoblocks-4k-laptop-screen-display-amazoncom-the-leader-of-website-for-online-shopping_scahn9v-4_thumbnail-1080_12.png')">
+        <img src="https://media.istockphoto.com/id/1174114820/photo/banking-online-has-never-been-more-convenient.jpg?s=612x612&w=0&k=20&c=wblZcbZ8_CvnJME4loxmXEdI15PyC2Iytk2IJ8tht3o=" alt="Clear Descriptions">
+        <h3>Clear Descriptions</h3>
+      </div>
+      <div class="card" onclick="showPopup('Prompt Replies', ['Simplify descriptions using clear, honest language', 'Use high-quality, full-view product images', 'Answer buyers quickly to build credibility and trust', 'Be consistent with pricing and product details'], 'https://extension.psu.edu/responding-to-customers-effectively-online#:~:text=A%20response%20plan%20begins%20with,questions%20before%20providing%20your%20response.','https://st3.depositphotos.com/14231584/19074/i/450/depositphotos_190743332-stock-photo-beautiful-russian-business-girl-working.jpg')">
+        <img src="https://media.gettyimages.com/id/1467968635/video/documents-laptop-or-thinking-businessman-with-company-finance-budget-investment-deal-or.jpg?s=640x640&k=20&c=nrll7nQ0XMt1pCnvptGuuealkNOI8xCoVydvn1vDcyg=" alt="Prompt Replies">
+        <h3>Prompt Replies</h3>
+      </div>
+      <div class="card" onclick="showPopup('Smart Pricing', ['Consider cost, effort, and market rate while setting prices', 'Research similar products for fair pricing', 'Include shipping or packaging costs if needed', 'Adjust prices based on demand and feedback'], 'https://zistemo.com/blog/small-business-pricing-strategy/','https://t3.ftcdn.net/jpg/02/41/43/18/360_F_241431868_8DFQpCcmpEPVG0UvopdztOAd4a6Rqsoo.jpg')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW8FOR_Rg78PJZt6LwzehyU2Pr0_sQLyVoVA&s" alt="Smart Pricing">
+        <h3>Smart Pricing</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h1>Tools & Resources</h1>
+    <div class="carousel">
+      <div class="card" onclick="showPopup('Invoice Template', ['Downloadable format for easy billing', 'Ensures transparency between buyer and seller', 'Helps track sales and inventory', 'Builds trust and professionalism'], 'https://www.invoicesimple.com/invoice-template','data:image/jpeg;base64,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')">
+        <img src="https://media.istockphoto.com/id/1410358766/vector/receipt-icon-in-a-flat-style-invoice-sign-bill-atm-template-or-restaurant-paper-financial.jpg?s=612x612&w=0&k=20&c=SZG8faVsPLoNr0apLnJPptxIHyANcDXtmazkA4zj5q8=" alt="Invoice Template">
+        <h3>Invoice Template</h3>
+      </div>
+      <div class="card" onclick="showPopup('Listing Guide', ['Use simple and honest language', 'Include key product details and benefits', 'Add high-quality images from different angles', 'Keep formatting clean and easy to read'], 'https://www.etsy.com/seller-handbook/article/how-to-write-product-listings-that/22401590148','https://www.aihello.com/resources/wp-content/uploads/2023/08/how-to-create-amazon-product-listing-01.png')">
+        <img src="https://i.etsystatic.com/inv/eff44c/6738359525/inv_609x512.6738359525_nz9uvc6i.jpg?version=0" alt="Listing Guide">
+        <h3>Listing Guide</h3>
+      </div>
+      <div class="card" onclick="showPopup('Branding Basics', ['Choose a memorable and relevant name', 'Reflect your brand and product style', 'Use consistent colors and fonts', 'Create a simple, eye-catching logo'], 'https://mailchimp.com/resources/the-basics-of-branding/','https://www.shutterstock.com/shutterstock/videos/1107657635/thumb/6.jpg?ip=x480')">
+        <img src="https://i.pinimg.com/736x/31/e3/5a/31e35af1e8032ed14baa4e3f05042d3a.jpg" alt="Branding Basics">
+        <h3>Branding Basics</h3>
+      </div>
+      <div class="card" onclick="showPopup('Packaging Guide', ['Eco-friendly, creative packaging ideas', 'Use recyclable or biodegradable materials', 'Ensure safe transit with proper padding', 'Add a personal touch like thank-you notes'], 'https://meyers.com/meyers-blog/product-packaging-guide/','https://d3hnfqimznafg0.cloudfront.net/images/Article_Images/ImageForArticle_1855_17228665237388872.jpg')">
+        <img src="https://image.made-in-china.com/2f0j00mWjrMbdJGVzi/Biodegradable-Custom-Printed-Branded-Corrugated-Cardboard-Sturdy-Shipping-Medical-Boxes-Packing-Packaging-Carton-Box-for-Chemical-Company.webp" alt="Packaging Guide">
+        <h3>Packaging Guide</h3>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupOverlay" class="popup-overlay" onclick="hidePopup()">
+    <div class="popup" onclick="event.stopPropagation()">
+      <span class="popup-close" onclick="hidePopup()">&#10006;</span>
+      <div class="popup-content">
+        <img id="popupImage" src="" alt="Popup Image" class="popup-img"/>
+        <div class="popup-text">
+          <h3 id="popupTitle"></h3>
+          <div id="popupDesc"></div>
+          <a id="popupLink" href="#" target="_blank">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+function showPopup(title, tipsArray, link, imageUrl) {
+      document.getElementById('popupTitle').textContent = title;
+
+      const formattedTips = Array.isArray(tipsArray)
+        ? tipsArray.map(tip => `<li>${tip}</li>`).join('')
+        : `<li>${tipsArray}</li>`;
+
+      document.getElementById('popupDesc').innerHTML = `<ul>${formattedTips}</ul>`;
+      document.getElementById('popupLink').href = link;
+      document.getElementById('popupImage').src = imageUrl;
+
+      document.getElementById('popupOverlay').style.display = 'flex';
+    }
+    function hidePopup() {
+      document.getElementById('popupOverlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
